@@ -1,0 +1,213 @@
+﻿
+<style>
+
+    .content-title, .fcont {
+        text-align: left;
+    }
+
+    h3.lite {
+        color: white;
+        font-size: 1.16rem;
+    }
+
+    .social a {
+        color: white;
+        text-decoration: none;
+    }
+
+        .social a:hover {
+            color: #F7A044;
+            text-decoration: none;
+        }
+
+    .fcont a {
+        color: rgb(150, 168, 182);
+        text-decoration: none;
+    }
+
+        .fcont a:hover {
+            color: #F7A044;
+            text-decoration: none;
+        }
+
+    .flex-space-between {
+        margin-top: 3vh;
+    }
+
+    .foot-note {
+        /* border-top: 1px rgb(150, 168, 182) solid;*/
+    }
+
+    .social a {
+        padding: 4px;
+        font-size: 1.4rem;
+    }
+
+    .footer-contents {
+        padding-top: 9vh;
+        padding-bottom: 3vh;
+    }
+
+    div .close, div .content-title .open {
+        display: none;
+    }
+
+    .content-title h3 {
+        display: block
+    }
+
+    .content-title p {
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        float: right;
+        font-size: 20px;
+        font-weight: 400;
+        margin-left: auto;
+        text-align: center;
+    }
+
+
+    .lite {
+        margin-bottom: 3vh
+    }
+
+    @media (min-width: 992px) {
+        .footer-contents > div .content-title .lite .open, .footer-contents > div .content-title .lite .close {
+            display: none
+        }
+
+        #e1links, #e2links, #e3links, #e4links {
+            display: block;
+        }
+    }
+
+    @media (max-width: 360px) {
+        h3.lite {
+            color: white;
+            font-size: 1.13rem;
+        }
+
+        .footer-contents > div .content-title .lite .close, #e1links, #i1cl, #e2links, #i2cl, #e3links, #i3cl, #e4links, #i4cl {
+            display: none
+        }
+
+        .footer-contents > div .content-title .lite .open {
+            display: block
+        }
+    }
+
+    .sofu {
+        background: #131923;
+        padding: 2vh;
+    }
+</style>
+<div class='sofu'>
+    <div class='container'>
+        <div class='row social'>
+
+            <div class="col-sm text-center hidden-xs"></div>            
+            <div class="col text-center"><a href='#' aria-label='https://www.youtube.com/channel/UCQoyeAeWXqgVGflPbI0M65g' rel='noopener noreferrer' target='_blank'><i class='fab fa-youtube'></i></a></div>
+            <div class="col text-center"><a href='#' aria-label='https://twitter.com/mnc_maincoin' rel='noopener noreferrer' target='_blank'><i class='fab fa-telegram'></i></a></div>
+            <div class="col text-center"><a href='https://discord.gg/MmZmnWrDVs' aria-label='https://discord.gg/MmZmnWrDVs' rel='noopener noreferrer' target='_blank'><i class='fab fa-discord'></i></a></div>
+            <div class="col text-center"><a href='https://vk.com/sablins.ru' aria-label='https://vk.com/sablins.ru' rel='noopener noreferrer' target='_blank'><i class='fab fa-vk'></i></a></div>
+            <div class="col-sm text-center hidden-xs"></div>
+
+        </div>
+    </div>
+</div>
+<div class='container'>
+
+    <div class='row footer-contents'>
+        <div class='col-lg-3 e1'>
+            <div class='content-title'>
+                <h3 class='lite'>
+                    Plugins
+                    <p class='open' id='i1op'><i aria-hidden='true' class='fa fa-plus' onclick='$("#e1links").slideDown(); $("#i1op").hide(); $("#i1cl").show();'></i></p>
+                    <p class='close' id='i1cl'><i aria-hidden='true' class='fa fa-minus' onclick='$("#e1links").slideUp(); $("#i1cl").hide(); $("#i1op").show();'></i></p>
+                </h3>
+            </div>
+            <div class='content-links'>
+                <div id='e1links'>                    
+                    <div class='fcont'><a href='https://exmo.me/' aria-label='Exmo' target='_blank' rel='noopener noreferrer'><p>Exmo</p></a></div>
+                    <div class='fcont'><a href='https://exmo.me/' aria-label='Exmo' target='_blank' rel='noopener noreferrer'><p>Exmo</p></a></div>
+                    <div class='fcont'><a href='https://exmo.me/' aria-label='Exmo' target='_blank' rel='noopener noreferrer'><p>Exmo</p></a></div>
+                    <div class='fcont'><a href='https://exmo.me/' aria-label='Exmo' target='_blank' rel='noopener noreferrer'><p>Exmo</p></a></div>
+                    <div class='fcont'><a href='https://exmo.me/' aria-label='Exmo' target='_blank' rel='noopener noreferrer'><p>Exmo</p></a></div>
+                    <div class='fcont'><a href='https://exmo.me/' aria-label='Exmo' target='_blank' rel='noopener noreferrer'><p>Exmo</p></a></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='col-lg-3 e2'>
+            <div class='content-title'>
+                <h3 class='lite'>
+                    Принимаем
+                    <p class='open' id='i2op'><i aria-hidden='true' class='fa fa-plus' onclick='$("#e2links").slideDown(); $("#i2op").hide(); $("#i2cl").show();'></i></p>
+                    <p class='close' id='i2cl'><i aria-hidden='true' class='fa fa-minus' onclick='$("#e2links").slideUp(); $("#i2cl").hide(); $("#i2op").show();'></i></p>
+                </h3>
+            </div>
+            <div class='content-links'>
+                <div id='e2links'>
+                    <div class='fcont'><a href='https://github.com/main-coin' aria-label='footer.maincoin.tools.source' target='_blank' rel='noopener noreferrer'><p> Yoomoney </p></a></div>                    
+                    <div class='fcont'><a href='https://maincoinwallet.com/#/' aria-label='footer.maincoin.tools.wallet' target='_blank' rel='noopener noreferrer'><p> Maincoin Wallet </p></a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-lg-3 e4'>
+            <div class='content-title'>
+                <h3 class='lite'>
+                    Контакты компании
+                    <p class='open' id='i4op'><i aria-hidden='true' class='fa fa-plus' onclick='$("#e4links").slideDown(); $("#i4op").hide(); $("#i4cl").show();'></i></p>
+                    <p class='close' id='i4cl'><i aria-hidden='true' class='fa fa-minus' onclick='$("#e4links").slideUp(); $("#i4cl").hide(); $("#i4op").show();'></i></p>
+                </h3>
+            </div>
+            <div class='content-links'>
+                <div id='e4links'>
+
+                    <div class='fcont'>
+                        <p>
+                            ИП Саблин Э.А
+                            
+                        </p>
+                    </div>
+                    <div class='fcont'>
+                        <p>
+                            Регистрационный номер ОГНИП:<br>
+                            11959231
+                        </p>
+                    </div>
+                    <div class='fcont'>
+                        <p>
+                            Адрес компании:<br>
+                            353993, г.Новороссийск. 
+                        </p>
+                    </div>
+                    <div class='fcont'>Mail:<br><a href='mailto:info@maincoin.money' class=''><p>sablins.ru@uyandex.ru</p></a></div>
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-3 e3'>
+            <div class='content-title'>
+                <h3 class='lite'>
+                    Юридическая информация
+                    <p class='open' id='i3op'><i aria-hidden='true' class='fa fa-plus' onclick='$("#e3links").slideDown(); $("#i3op").hide(); $("#i3cl").show();'></i></p>
+                    <p class='close' id='i3cl'><i aria-hidden='true' class='fa fa-minus' onclick='$("#e3links").slideUp(); $("#i3cl").hide(); $("#i3op").show();'></i></p>
+                </h3>
+            </div>
+            <div class='content-links'>
+                <div id='e3links'>                    
+                    <div class='fcont'><a href='' aria-label='footer.audit' target='_blank' rel='noopener noreferrer'><p>123</p></a></div>
+                    <div class='fcont'><a href='' aria-label='footer.esume' target='_blank' rel='noopener noreferrer'><p>Юридическое заключение</p></a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class='flex-space-between foot-note '>
+        <div class='copyright'><p> SABLINS.RU © ALL RIGHTS RESERVED</p></div>
+    </div>
+</div>

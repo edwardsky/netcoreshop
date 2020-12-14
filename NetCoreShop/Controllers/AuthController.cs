@@ -23,7 +23,7 @@ namespace NetCoreShop.Controllers
 
         // GET api/<AuthController>/5
         [HttpGet("{player}")]
-        public string Get(string uuid)
+        public string Get(string player)
         {
             return "player not found";
         }
