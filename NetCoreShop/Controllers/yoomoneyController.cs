@@ -11,7 +11,7 @@ namespace NetCoreShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class yoomoneyController : ControllerBase
+    public class YoomoneyController : ControllerBase
     {
 
         // https://yoomoney.ru/docs/payment-buttons/using-api/forms
