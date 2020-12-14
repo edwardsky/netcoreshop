@@ -38,7 +38,7 @@ namespace NetCoreShop
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseForwardedHeaders();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
