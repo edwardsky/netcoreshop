@@ -1,9 +1,12 @@
-# NetCoreShop .Net core shop site
+# NetCoreShop 
+
+NetSoreShop is a .net core online shop  with digital delivery for online games.
 
 ![.NET](https://github.com/edwardsky/netcoreshop/workflows/.NET/badge.svg) ![https://github.com/edwardsky/netcoreshop/issues](https://img.shields.io/github/issues/edwardsky/netcoreshop) ![https://github.com/edwardsky/netcoreshop/blob/master/LICENSE](https://img.shields.io/github/license/edwardsky/netcoreshop)
 
 # Features Business 
 
+- MineCraft server intergration
 - Register and login users
 - Complete register via email
 - Admin Console
