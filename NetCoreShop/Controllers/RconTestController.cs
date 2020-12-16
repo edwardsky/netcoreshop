@@ -19,34 +19,43 @@ namespace NetCoreShop.Controllers
         [HttpGet]
         public string Get()
         {
+
+
             string result = "";
-            try
+            if (!Startup.RCONTEST)
             {
-                string[] rc = Startup.RCON.Split(":");
-                //test local server            
-                var rcon = new RCON(IPAddress.Parse(rc[0]), ushort.Parse(rc[1]), rc[2]);
-                rcon.ConnectAsync().Wait();
-                result = rcon.SendCommandAsync("say NetCoreShop activated").Result;
-                // Set vip OK
-                //result = rcon.SendCommandAsync("lp user Edwardsky parent set vip").Result;
-
-                //give 64 apples
-                //result = rcon.SendCommandAsync("give Edwardsky apple 64").Result;
-                //op Ok
-                //result = rcon.SendCommandAsync("op Edwardsky").Result;
-
-                // Set money OK                
-                //result = rcon.SendCommandAsync("economy give Edwardsky 100000").Result;
-
-
-                // Status status = rcon.SendCommandAsync<Status>("status").Result;
-
-                // result = status.Version;
-
+                result = "Rcon test disabled";
             }
-            catch (Exception ex)
+            else
             {
-                result = ex.ToString();
+                try
+                {
+                    string[] rc = Startup.RCON.Split(":");
+                    //test local server            
+                    var rcon = new RCON(IPAddress.Parse(rc[0]), ushort.Parse(rc[1]), rc[2]);
+                    rcon.ConnectAsync().Wait();
+                    result = rcon.SendCommandAsync("say NetCoreShop activated").Result;
+                    // Set vip OK
+                    //result = rcon.SendCommandAsync("lp user Edwardsky parent set vip").Result;
+
+                    //give 64 apples
+                    //result = rcon.SendCommandAsync("give Edwardsky apple 64").Result;
+                    //op Ok
+                    //result = rcon.SendCommandAsync("op Edwardsky").Result;
+
+                    // Set money OK                
+                    //result = rcon.SendCommandAsync("economy give Edwardsky 100000").Result;
+
+
+                    // Status status = rcon.SendCommandAsync<Status>("status").Result;
+
+                    // result = status.Version;
+
+                }
+                catch (Exception ex)
+                {
+                    result = ex.ToString();
+                }
             }
             return result;
         }

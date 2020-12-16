@@ -31,10 +31,11 @@ gulp.task('min-js', function () {
         .pipe(gulp.dest(paths.webroot + "/min"));
 });
 
-var htmlmin = require('gulp-html-minifier');
+const htmlmin = require('gulp-htmlmin');
 
 gulp.task('min-html', function () {
-    gulp.src(paths.webroot + '/*.html')
+    return gulp.src(paths.webroot + '/*.html')
         .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest(paths.webroot + '/min'));
+        .pipe(gulp.dest(paths.webroot + "/min"));
+
 });

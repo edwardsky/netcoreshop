@@ -14,22 +14,17 @@ String.prototype.replaceAll = function (search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-window.counts = {
-    coins: 2232,
-    markets: 432,
-    shops: 13233
-};
-
 window.homemenu = [
 
     { key: "last", value: "" },
     { key: "server", value: "server" },
     { key: "shop", value: "shop/" },
     { key: "top", value: "top/" },
-    //{ key: "search", value: "widgetSearch", left: false },
-
+    { key: "login", value: "widgetLogin", left: true },
+    { key: "search", value: "widgetSearch", left: false },
     { key: "lang", value: "widgetLanguage", left: false },
-    { key: "logo", value: "widgetLogo", left: true }];
+    { key: "logo", value: "widgetLogo", left: true },
+];
 
 window.coinmenu = [
     { key: "logo", value: "widgetLogo" },
@@ -752,960 +747,839 @@ function bootstraped() {
 
 
 
-            //$.get("/api/last/" + page + "?view=" + window.view + "&show=" + show, function (e) {
-            //    // console.log(e);
-
-
-
-
-            //    var ht = document.createTextNode(window.lang.last + " " + numeral("'" + e.data.totalcount + "'").format('0,0'));
-            //    h2.appendChild(ht);
-            //    content.appendChild(h2);
-
-
-            //    let tte = document.createElement("div"); tte.setAttribute('class', 'btn-group mt-3'); Append(h2, ce("br"));
-            //    Append(h2, tte);
-
-            //    let btall = document.createElement("a"); btall.setAttribute('href', '/' + parcedlng + "/");
-            //    if (window.view === "homepage") btall.setAttribute('class', 'btn btn-primary btn-sm');
-            //    else btall.setAttribute('class', 'btn btn-outline-primary btn-sm');
-
-            //    Append(btall, tn(window.lang.topall)); Append(tte, btall);
-            //    let btex = document.createElement("a"); btex.setAttribute('href', '/' + parcedlng + "/txex/");
-            //    if (window.view === "txex") btex.setAttribute('class', 'btn btn-primary btn-sm');
-            //    else btex.setAttribute('class', 'btn btn-outline-primary btn-sm');
-            //    Append(btex, tn(window.lang.topex)); Append(tte, btex);
-
-            //    var table = document.createElement("TABLE");
-            //    table.setAttribute('class', 'table');
-            //    var trh = document.createElement('tr');
-            //    var thh = document.createElement('th');
-            //    thh.appendChild(document.createTextNode(window.lang.hash));
-            //    trh.appendChild(thh);
-
-            //    var tha = document.createElement('th');
-            //    tha.setAttribute('class', 'hidemobile');
-            //    tha.appendChild(document.createTextNode(window.lang.age));
-            //    trh.appendChild(tha);
-
-            //    var ths = document.createElement('th');
-            //    ths.appendChild(document.createTextNode(window.lang.sender));
-            //    ths.setAttribute('class', 'hidemobile');
-            //    trh.appendChild(ths);
-
-            //    var thar = document.createElement('th');
-            //    thar.appendChild(document.createTextNode(""));
-            //    thar.setAttribute('class', 'hidemobile');
-            //    trh.appendChild(thar);
-
-            //    var thr = document.createElement('th');
-            //    thr.appendChild(document.createTextNode(window.lang.recipient));
-            //    thr.setAttribute('class', 'hidemobile');
-            //    trh.appendChild(thr);
-
-            //    var thq = document.createElement('th');
-            //    thq.appendChild(document.createTextNode(window.lang.amount + " MNC"));
-            //    trh.appendChild(thq);
-
-            //    table.appendChild(trh);
-            //    content.appendChild(table);
-            //    for (var i = 0; i < e.data.list.length; i++) {
-
-            //        var dr = e.data.list[i];
-            //        var tr = document.createElement('tr');
-
-            //        var tdh = document.createElement('td');
-            //        tdh.appendChild(aHash(dr["txhash"]));
-            //        tr.appendChild(tdh);
-
-            //        var tdAge = document.createElement('td');
-            //        var txtime = dr["txtime"] * 1000;
-
-            //        var age = moment(txtime);
-            //        var tna = document.createTextNode(age.fromNow(true));
-            //        tdAge.appendChild(tna);
-            //        tdAge.setAttribute('data-toggle', 'tooltip');
-            //        tdAge.setAttribute('title', age.format('LLL'));
-            //        tdAge.setAttribute('class', 'hidemobile');
-            //        tr.appendChild(tdAge);
-
-            //        var tdFrom = document.createElement('td');
-            //        tdFrom.appendChild(aAcc(dr["txfrom"], false, false));
-            //        tdFrom.setAttribute('class', 'hidemobile');
-            //        tr.appendChild(tdFrom);
-
-            //        var tdarr = document.createElement('td');
-            //        var sparr = document.createElement('span');
-            //        sparr.setAttribute('class', 'sparr');
-            //        sparr.setAttribute('id', 'sparr' + i);
-
-            //        tdarr.appendChild(sparr);
-            //        tdarr.setAttribute('class', 'hidemobile');
-            //        tr.appendChild(tdarr);
-
-            //        var tdTo = document.createElement('td');
-            //        tdTo.appendChild(aAcc(dr["txto"], false, false));
-            //        tdTo.setAttribute('class', 'hidemobile');
-            //        tr.appendChild(tdTo);
-
-            //        var tdTotal = document.createElement('td');
-            //        let deci = dr["txvs"].split(".");
-            //        if (deci.length === 2) deci = "." + deci[1];
-            //        else deci = "";
-            //        var tnt = document.createTextNode(numfix(numeral("'" + dr["txvalue"] + "'").format('0,0'), ".") + deci);
-            //        tdTotal.appendChild(tnt);
-            //        tr.appendChild(tdTotal);
-
-
-
-            //        table.appendChild(tr);
-            //        document.getElementById('sparr' + i).innerHTML = "&rarr;";
-            //    }
-
-
-
-            //    if (e.data.pages > 0)
-            //        content.appendChild(Pager(e));
-
-
-
-
-            //    $('#main').css({ "background": "none" });
-
-            //});
-
+         
 
 
         }
 
-        if (window.view === "coin") {
-            var h2coin = document.createElement("H2");
-            h2coin.setAttribute('class', 'PageHeader');
-            var htcoin = document.createTextNode(window.lang.coinheader);
-            h2coin.appendChild(htcoin);
-            //content.appendChild(h2coin);
-            var offset = -1 * new Date().getTimezoneOffset();
-
-            $.get("/api/coin/?tz=" + offset, function (e) {
-                window.coin = e;
-
-                var dvcoin = document.createElement("div");
-                dvcoin.setAttribute('class', 'container');
-                content.appendChild(dvcoin);
-
-                var dvrow = document.createElement("div");
-                dvrow.setAttribute('class', 'row');
-                dvcoin.appendChild(dvrow);
-
-
-                var dvSpec = document.createElement("div");
-                dvSpec.setAttribute('class', 'col');
-
-                var hSpec = document.createElement("H4");
-                hSpec.setAttribute('class', 'PageHeader caps');
-                hSpec.appendChild(document.createTextNode(window.lang.spec));
-                dvSpec.appendChild(hSpec);
-                dvrow.appendChild(dvSpec);
-
-                //name desc
-                var tabs = document.createElement("TABLE");
-                tabs.setAttribute('class', 'table');
-                var trspec = document.createElement('tr');
-                var thn = document.createElement('th');
-                thn.setAttribute('class', 'caps');
-                thn.appendChild(document.createTextNode(window.lang.name));
-                trspec.appendChild(thn);
-                var thdes = document.createElement('th');
-                thdes.setAttribute('class', 'caps');
-                thdes.appendChild(document.createTextNode(window.lang.desc));
-                trspec.appendChild(thdes);
-                tabs.appendChild(trspec);
-
-                //Token Name	MainCoin
-                var tr3 = document.createElement('tr');
-                var td3n = document.createElement('td');
-                td3n.appendChild(document.createTextNode(window.lang.tn));
-                tr3.appendChild(td3n);
-                var td3v = document.createElement('td');
-                //td3v.appendChild(document.createTextNode(e.data[1].ethplorer_getTokenInfo.name));
-                td3v.appendChild(document.createTextNode('MainCoin'));
-                tr3.appendChild(td3v);
-                tabs.appendChild(tr3);
-
-                //Token Symbol	MNC data[1].ethplorer_getTokenInfo.symbol
-                var tr6 = document.createElement('tr');
-                var td6n = document.createElement('td');
-                td6n.appendChild(document.createTextNode(window.lang.tsym));
-                tr6.appendChild(td6n);
-                var td6v = document.createElement('td');
-                //td6v.appendChild(document.createTextNode(e.data[1].ethplorer_getTokenInfo.symbol));
-                td6v.appendChild(document.createTextNode("MNC"));
-                tr6.appendChild(td6v);
-                tabs.appendChild(tr6);
-
-                //Token Type	Token implements ERC20 and Burnable interfaces
-                var tr4 = document.createElement('tr');
-                var td4n = document.createElement('td');
-                td4n.appendChild(document.createTextNode(window.lang.tt));
-                tr4.appendChild(td4n);
-                var td4v = document.createElement('td');
-                td4v.appendChild(document.createTextNode(window.lang.ttv));
-                tr4.appendChild(td4v);
-                tabs.appendChild(tr4);
-
-
-                //Smart - contract	0x9f0f1be08591ab7d990faf910b38ed5d60e4d5bf  
-                var tr7 = document.createElement('tr');
-                var td7n = document.createElement('td');
-                td7n.appendChild(document.createTextNode(window.lang.smrt));
-                tr7.appendChild(td7n);
-                var td7v = document.createElement('td');
-                td7v.appendChild(aAcc('0x9f0f1Be08591AB7d990faf910B38ed5D60e4D5Bf', false, false));
-                tr7.appendChild(td7v);
-                tabs.appendChild(tr7);
-
-                //Underlying Blockchain	Ethereum network 
-                var tr5 = document.createElement('tr');
-                var td5n = document.createElement('td');
-                td5n.appendChild(document.createTextNode(window.lang.under));
-                tr5.appendChild(td5n);
-                var td5v = document.createElement('td');
-                td5v.appendChild(document.createTextNode(window.lang.ethn));
-                tr5.appendChild(td5v);
-                tabs.appendChild(tr5);
-
-                //Website	https://maincoin.money/
-                var tr2 = document.createElement('tr');
-                var td2n = document.createElement('td');
-                td2n.appendChild(document.createTextNode(window.lang.web));
-                tr2.appendChild(td2n);
-                var td2v = document.createElement('td');
-                var asite = document.createElement('a');
-                asite.setAttribute("href", window.lang.site);
-                asite.setAttribute("target", "_blank");
-                //asite.setAttribute("class", "s");
-                asite.appendChild(document.createTextNode(window.lang.site));
-                td2v.appendChild(asite);
-                tr2.appendChild(td2v);
-                tabs.appendChild(tr2);
-
-                var tr10 = document.createElement('tr');
-                var td10n = document.createElement('td');
-                td10n.appendChild(document.createTextNode(window.lang.txs));
-                tr10.appendChild(td10n);
-                var td10v = document.createElement('td');
-                var numtx = " " + numeral("'" + e.data.total + "'").format('0,0');
-                td10v.appendChild(document.createTextNode(numtx));
-                tr10.appendChild(td10v);
-                tabs.appendChild(tr10);
-
-                //Holders count	16298 
-                var tr9 = document.createElement('tr');
-                var td9n = document.createElement('td');
-                td9n.appendChild(document.createTextNode(window.lang.hlderscount));
-                tr9.appendChild(td9n);
-                var td9v = document.createElement('td');
-                var numh = numeral("'" + e.data.holders + "'");
-                td9v.appendChild(document.createTextNode(numh.format('0,0')));
-                tr9.appendChild(td9v);
-                tabs.appendChild(tr9);
-
-                //Total supply	380, 020, 246 MNC are issued initially and limited forever. 
-
-
-
-                dvSpec.appendChild(tabs);
-
-
-                var dvchart = document.createElement("div");
-                dvchart.setAttribute('class', 'col col-sm-5');
-                var hchart = document.createElement("H4");
-                hchart.setAttribute('class', 'PageHeader caps');
-                var numw = " " + numeral("'" + e.data.week + "'").format('0,0');
-                hchart.appendChild(document.createTextNode(window.lang.chartheader + numw));
-                dvchart.appendChild(hchart);
-
-                var dvcht = document.createElement("canvas");
-                dvcht.setAttribute('id', 'ctx');
-                dvcht.setAttribute('height', '340px');
-                dvchart.appendChild(dvcht);
-
-
-                var d2 = moment().subtract(1, 'days').format('dd');
-
-                var d3 = moment().subtract(2, 'days').format('dd');
-                var d4 = moment().subtract(3, 'days').format('dd');
-                var d5 = moment().subtract(4, 'days').format('dd');
-                var d6 = moment().subtract(5, 'days').format('dd');
-                var d7 = moment().subtract(6, 'days').format('dd');
-
-
-                var barChartData = {
-                    labels: [d7, d6, d5, d4, d3, d2, window.lang.today],
-                    datasets: [{
-                        label: window.lang.txs,
-                        backgroundColor: "#F0B90B",
-                        borderColor: "#F0B90B",
-                        borderWidth: 1,
-                        data: [
-                            e.data.chart[0],
-                            e.data.chart[1],
-                            e.data.chart[2],
-                            e.data.chart[3],
-                            e.data.chart[4],
-                            e.data.chart[5],
-                            e.data.chart[6]
-                        ]
-                    }]
-                };
-
-
-                var LineChart = new Chart(dvcht, {
-                    type: 'bar',
-                    data: barChartData,
-                    options: {
-                        responsive: true,
-                        legend: {
-                            position: 'bottom'
-                        },
-                        animation: {
-                            duration: 0
-                        }
-                    }
-                });
-
-                window.coinchart = LineChart;
-
-                dvrow.appendChild(dvchart);
-
-                $('#main').css({ "background": "none" });
-            });
-
-            // TODO render pulse chart
-
-
-        }
-
-        if (window.view === "accounts") {
-            var pg = getParameterByName('page');
-            var sh = getParameterByName('show');
-            if (pg === null) pg = 1;
-            if (sh === null) sh = 11;
-            var adr = "/api/last/" + pg + "?show=" + sh + "&acc=" + window.holder;
-
-            $.get(adr, function (e) {
-
-
-                var h2acc = document.createElement("H2");
-                h2acc.setAttribute('class', 'PageHeader bold');
-
-
-                var icon = blockies.create({ // All options are optional
-                    seed: window.holder.toLowerCase(), // seed used to generate icon data, default: random
-                    //color: '#dfe', // to manually specify the icon color, default: random
-                    //bgcolor: '#aaa', // choose a different background color, default: random
-                    size: 8, // width/height of the icon in blocks, default: 8
-                    scale: 16 // width/height of each block in pixels, default: 4
-                    // spotcolor: '#000' // each pixel has a 13% chance of being of a third color, 
-                    // default: random. Set to -1 to disable it. These "spots" create structures
-                    // that look like eyes, mouths and noses. 
-                });
-
-                var img = document.createElement("div");
-                img.setAttribute('style', 'background-image: url(' + icon.toDataURL() + ');');
-                img.setAttribute('class', 'AccIcon');
-                img.setAttribute('data-toggle', 'tooltip');
-                img.setAttribute('title', window.lang.blockie);
-                h2acc.insertBefore(img, h2acc.childNodes[0]);
-
-                var htacc = document.createTextNode(window.lang.holder);
-                h2acc.appendChild(htacc);
-
-                if (e.data.acc === undefined) {
-
-                    let p = ce("p"); Append(p, tn("'" + window.holder + "' " + window.lang.notfound));
-
-                    content.appendChild(h2acc);
-                    content.appendChild(p);
-                    $('#main').css({ "background": "none" });
-                    return;
-                }
-
-
-
-
-                let full = true;
-                //if (window.innerWidth < 600) full = false;
-                h2acc.appendChild(aAcc(e.data.acc, full, true));
-
-                let exch = document.createElement('a');
-                Append(h2acc, ce("br"));
-
-                let wal = window.wallets[e.data.acc.toLowerCase()];
-                if (wal !== undefined) {
-                    var d = wal.name;
-                    let l = ce('img'); l.src = wal.logo;
-                    Attr(l, "style", "float: left; margin-right:5px; margin-top:3px; height: 16px; display: inline-block;");
-                    Attr(exch, "class", "exch");
-                    Attr(exch, "target", "_blank");
-                    Attr(exch, "href", wal.site);
-
-
-                    Append(exch, l);
-                    let le = ce('img'); le.src = "/wallets/ext.svg"; Attr(le, "width", "11"); Attr(le, "style", "margin-top:-6px;margin-left:3px");
-                    let se = ce('div'); Attr(se, "style", "display:inline-block; line-height: 18px; overflow: hidden; margin-top: 2px;"); Append(se, tn(d));
-                    Append(exch, se);
-                    Append(exch, le);
-                    content.appendChild(h2acc);
-                    content.appendChild(exch);
-                } else {
-
-                    Append(exch, tn(d));
-                    content.appendChild(h2acc);
-                }
-
-
-                $('[data-toggle="tooltip"]').tooltip();
-                //console.log(e);
-
-                if (e.data.totalcount === 0) {
-
-                    var dvInfoNf = document.createElement("div");
-                    dvInfoNf.setAttribute('class', 'container acchead');
-                    dvInfoNf.appendChild(document.createTextNode(window.lang.notfound));
-                    content.appendChild(dvInfoNf);
-                    $('#main').css({ "background": "none" });
-                } else {
-
-                    var dvInfo = document.createElement("div");
-                    dvInfo.setAttribute('class', 'container acchead');
-                    content.appendChild(dvInfo);
-
-                    var dvIdr = document.createElement("div");
-                    dvIdr.setAttribute('class', 'row accblock pt-2');
-
-                    dvInfo.appendChild(dvIdr);
-
-                    //var dvIA = document.createElement("div");
-                    //dvIA.setAttribute('class', 'col');
-                    //var hA = document.createElement("H4");
-                    //hA.setAttribute('class', 'PageSubHeader');
-                    //hA.appendChild(document.createTextNode(window.lang.addr));
-                    //dvIA.appendChild(hA);
-                    //dvIA.appendChild(document.createTextNode(window.holder));
-
-                    //dvIdr.appendChild(dvIA);
-                    var dvIbt = document.createElement("div");
-                    dvIbt.setAttribute('class', 'col-lg');
-                    dvIbt.setAttribute('style', '');
-                    var hbt = document.createElement("H5");
-                    hbt.setAttribute('class', '');
-
-                    hbt.appendChild(document.createTextNode(window.lang.balance_token));
-                    dvIbt.appendChild(hbt);
-
-                    var numa = numfix(numeral("'" + e.data.balance_mnc + "'").format('0,0.000000000000000000'), ".")
-
-
-                    if (numa === "0" && e.data.balance_mnc > 0) {
-                        numa = mz(e.data.balance_mnc);
-                    }
-                    dvIbt.appendChild(document.createTextNode(numa));
-                    dvIdr.appendChild(dvIbt);
-
-                    var dvIbe = document.createElement("div");
-                    dvIbe.setAttribute('class', 'col-lg');
-                    var hbe = document.createElement("H5");
-                    hbe.setAttribute('class', '');
-                    hbe.appendChild(document.createTextNode(window.lang.balance_eth));
-                    dvIbe.appendChild(hbe);
-
-
-
-                    dvIbe.appendChild(document.createTextNode(numfix(numeral("'" + e.data.balance_eth + "'").format('0,0.000000000000000000'), ".")));
-
-                    dvIdr.appendChild(dvIbe);
-
-                    var dvIfe = document.createElement("div");
-                    dvIfe.setAttribute('class', 'col-lg');
-                    var hfe = document.createElement("H5");
-                    hfe.setAttribute('class', '');
-                    hfe.appendChild(document.createTextNode(window.lang.sum_fee));
-                    dvIfe.appendChild(hfe);
-                    dvIfe.appendChild(document.createTextNode(numfix(numeral("'" + e.data.sum_fee + "'").format('0,0.000000000000000000'), ".")));
-
-                    dvIdr.appendChild(dvIfe);
-
-                    //var dvItx = document.createElement("div");
-                    //dvItx.setAttribute('class', 'col');
-                    //var hC = document.createElement("H5");
-                    //hC.setAttribute('class', 'PageSubHeader');
-                    //hC.appendChild(document.createTextNode(window.lang.txs));
-                    //dvItx.appendChild(hC);
-                    //dvItx.appendChild(document.createTextNode(e.data.totalcount));
-
-                    //dvIdr.appendChild(dvItx);
-
-                    var dvIsi = document.createElement("div");
-                    dvIsi.setAttribute('class', 'col-lg');
-                    var hSi = document.createElement("H5");
-                    hSi.setAttribute('class', '');
-                    hSi.appendChild(document.createTextNode(window.lang.sum_in));
-                    dvIsi.appendChild(hSi);
-
-                    dvIsi.setAttribute('title', numfix(numeral("'" + e.data.sum_in + "'").format('0,0.000000000000000000'), ".") + " MNC");
-                    dvIsi.appendChild(document.createTextNode(numfix(numeral("'" + e.data.sum_in + "'").format('0,0.00000000'), ".")));
-
-                    dvIdr.appendChild(dvIsi);
-
-                    var dvIso = document.createElement("div");
-                    dvIso.setAttribute('class', 'col-lg');
-                    var hSo = document.createElement("H5");
-                    hSo.setAttribute('class', '');
-                    hSo.appendChild(document.createTextNode(window.lang.sum_out));
-                    dvIso.appendChild(hSo);
-                    dvIso.setAttribute('title', numfix(numeral("'" + e.data.sum_out + "'").format('0,0.000000000000000000'), ".") + " MNC");
-                    dvIso.setAttribute('data-toggle', "tooltip");
-                    dvIso.appendChild(document.createTextNode(numfix(numeral("'" + e.data.sum_out + "'").format('0,0.00000000'), ".")));
-
-                    dvIdr.appendChild(dvIso);
-
-
-                    var table = document.createElement("TABLE");
-                    table.setAttribute('class', 'table');
-                    var trh = document.createElement('tr');
-                    var thh = document.createElement('th');
-                    thh.appendChild(document.createTextNode(window.lang.hash));
-                    trh.appendChild(thh);
-
-                    var tha = document.createElement('th');
-                    tha.appendChild(document.createTextNode(window.lang.age));
-                    tha.setAttribute('class', 'hidemobile');
-                    trh.appendChild(tha);
-
-                    var ths = document.createElement('th');
-                    ths.appendChild(document.createTextNode(window.lang.sender));
-                    ths.setAttribute('class', 'hidemobile');
-                    trh.appendChild(ths);
-
-                    var thar = document.createElement('th');
-                    thar.appendChild(document.createTextNode(""));
-                    trh.appendChild(thar);
-
-                    var thr = document.createElement('th');
-                    thr.appendChild(document.createTextNode(window.lang.recipient));
-                    thr.setAttribute('class', 'hidemobile');
-                    trh.appendChild(thr);
-
-                    var thq = document.createElement('th');
-                    thq.appendChild(document.createTextNode(window.lang.amount + " MNC"));
-                    trh.appendChild(thq);
+        //if (window.view === "coin") {
+        //    var h2coin = document.createElement("H2");
+        //    h2coin.setAttribute('class', 'PageHeader');
+        //    var htcoin = document.createTextNode(window.lang.coinheader);
+        //    h2coin.appendChild(htcoin);
+        //    //content.appendChild(h2coin);
+        //    var offset = -1 * new Date().getTimezoneOffset();
+
+        //    $.get("/api/coin/?tz=" + offset, function (e) {
+        //        window.coin = e;
+
+        //        var dvcoin = document.createElement("div");
+        //        dvcoin.setAttribute('class', 'container');
+        //        content.appendChild(dvcoin);
+
+        //        var dvrow = document.createElement("div");
+        //        dvrow.setAttribute('class', 'row');
+        //        dvcoin.appendChild(dvrow);
+
+
+        //        var dvSpec = document.createElement("div");
+        //        dvSpec.setAttribute('class', 'col');
+
+        //        var hSpec = document.createElement("H4");
+        //        hSpec.setAttribute('class', 'PageHeader caps');
+        //        hSpec.appendChild(document.createTextNode(window.lang.spec));
+        //        dvSpec.appendChild(hSpec);
+        //        dvrow.appendChild(dvSpec);
+
+        //        //name desc
+        //        var tabs = document.createElement("TABLE");
+        //        tabs.setAttribute('class', 'table');
+        //        var trspec = document.createElement('tr');
+        //        var thn = document.createElement('th');
+        //        thn.setAttribute('class', 'caps');
+        //        thn.appendChild(document.createTextNode(window.lang.name));
+        //        trspec.appendChild(thn);
+        //        var thdes = document.createElement('th');
+        //        thdes.setAttribute('class', 'caps');
+        //        thdes.appendChild(document.createTextNode(window.lang.desc));
+        //        trspec.appendChild(thdes);
+        //        tabs.appendChild(trspec);
+
+        //        //Token Name	MainCoin
+        //        var tr3 = document.createElement('tr');
+        //        var td3n = document.createElement('td');
+        //        td3n.appendChild(document.createTextNode(window.lang.tn));
+        //        tr3.appendChild(td3n);
+        //        var td3v = document.createElement('td');
+        //        //td3v.appendChild(document.createTextNode(e.data[1].ethplorer_getTokenInfo.name));
+        //        td3v.appendChild(document.createTextNode('MainCoin'));
+        //        tr3.appendChild(td3v);
+        //        tabs.appendChild(tr3);
+
+        //        //Token Symbol	MNC data[1].ethplorer_getTokenInfo.symbol
+        //        var tr6 = document.createElement('tr');
+        //        var td6n = document.createElement('td');
+        //        td6n.appendChild(document.createTextNode(window.lang.tsym));
+        //        tr6.appendChild(td6n);
+        //        var td6v = document.createElement('td');
+        //        //td6v.appendChild(document.createTextNode(e.data[1].ethplorer_getTokenInfo.symbol));
+        //        td6v.appendChild(document.createTextNode("MNC"));
+        //        tr6.appendChild(td6v);
+        //        tabs.appendChild(tr6);
+
+        //        //Token Type	Token implements ERC20 and Burnable interfaces
+        //        var tr4 = document.createElement('tr');
+        //        var td4n = document.createElement('td');
+        //        td4n.appendChild(document.createTextNode(window.lang.tt));
+        //        tr4.appendChild(td4n);
+        //        var td4v = document.createElement('td');
+        //        td4v.appendChild(document.createTextNode(window.lang.ttv));
+        //        tr4.appendChild(td4v);
+        //        tabs.appendChild(tr4);
+
+
+        //        //Smart - contract	0x9f0f1be08591ab7d990faf910b38ed5d60e4d5bf  
+        //        var tr7 = document.createElement('tr');
+        //        var td7n = document.createElement('td');
+        //        td7n.appendChild(document.createTextNode(window.lang.smrt));
+        //        tr7.appendChild(td7n);
+        //        var td7v = document.createElement('td');
+        //        td7v.appendChild(aAcc('0x9f0f1Be08591AB7d990faf910B38ed5D60e4D5Bf', false, false));
+        //        tr7.appendChild(td7v);
+        //        tabs.appendChild(tr7);
+
+        //        //Underlying Blockchain	Ethereum network 
+        //        var tr5 = document.createElement('tr');
+        //        var td5n = document.createElement('td');
+        //        td5n.appendChild(document.createTextNode(window.lang.under));
+        //        tr5.appendChild(td5n);
+        //        var td5v = document.createElement('td');
+        //        td5v.appendChild(document.createTextNode(window.lang.ethn));
+        //        tr5.appendChild(td5v);
+        //        tabs.appendChild(tr5);
+
+        //        //Website	https://maincoin.money/
+        //        var tr2 = document.createElement('tr');
+        //        var td2n = document.createElement('td');
+        //        td2n.appendChild(document.createTextNode(window.lang.web));
+        //        tr2.appendChild(td2n);
+        //        var td2v = document.createElement('td');
+        //        var asite = document.createElement('a');
+        //        asite.setAttribute("href", window.lang.site);
+        //        asite.setAttribute("target", "_blank");
+        //        //asite.setAttribute("class", "s");
+        //        asite.appendChild(document.createTextNode(window.lang.site));
+        //        td2v.appendChild(asite);
+        //        tr2.appendChild(td2v);
+        //        tabs.appendChild(tr2);
+
+        //        var tr10 = document.createElement('tr');
+        //        var td10n = document.createElement('td');
+        //        td10n.appendChild(document.createTextNode(window.lang.txs));
+        //        tr10.appendChild(td10n);
+        //        var td10v = document.createElement('td');
+        //        var numtx = " " + numeral("'" + e.data.total + "'").format('0,0');
+        //        td10v.appendChild(document.createTextNode(numtx));
+        //        tr10.appendChild(td10v);
+        //        tabs.appendChild(tr10);
+
+        //        //Holders count	16298 
+        //        var tr9 = document.createElement('tr');
+        //        var td9n = document.createElement('td');
+        //        td9n.appendChild(document.createTextNode(window.lang.hlderscount));
+        //        tr9.appendChild(td9n);
+        //        var td9v = document.createElement('td');
+        //        var numh = numeral("'" + e.data.holders + "'");
+        //        td9v.appendChild(document.createTextNode(numh.format('0,0')));
+        //        tr9.appendChild(td9v);
+        //        tabs.appendChild(tr9);
+
+        //        //Total supply	380, 020, 246 MNC are issued initially and limited forever. 
+
+
+
+        //        dvSpec.appendChild(tabs);
+
+
+        //        var dvchart = document.createElement("div");
+        //        dvchart.setAttribute('class', 'col col-sm-5');
+        //        var hchart = document.createElement("H4");
+        //        hchart.setAttribute('class', 'PageHeader caps');
+        //        var numw = " " + numeral("'" + e.data.week + "'").format('0,0');
+        //        hchart.appendChild(document.createTextNode(window.lang.chartheader + numw));
+        //        dvchart.appendChild(hchart);
+
+        //        var dvcht = document.createElement("canvas");
+        //        dvcht.setAttribute('id', 'ctx');
+        //        dvcht.setAttribute('height', '340px');
+        //        dvchart.appendChild(dvcht);
+
+
+        //        var d2 = moment().subtract(1, 'days').format('dd');
+
+        //        var d3 = moment().subtract(2, 'days').format('dd');
+        //        var d4 = moment().subtract(3, 'days').format('dd');
+        //        var d5 = moment().subtract(4, 'days').format('dd');
+        //        var d6 = moment().subtract(5, 'days').format('dd');
+        //        var d7 = moment().subtract(6, 'days').format('dd');
+
+
+        //        var barChartData = {
+        //            labels: [d7, d6, d5, d4, d3, d2, window.lang.today],
+        //            datasets: [{
+        //                label: window.lang.txs,
+        //                backgroundColor: "#F0B90B",
+        //                borderColor: "#F0B90B",
+        //                borderWidth: 1,
+        //                data: [
+        //                    e.data.chart[0],
+        //                    e.data.chart[1],
+        //                    e.data.chart[2],
+        //                    e.data.chart[3],
+        //                    e.data.chart[4],
+        //                    e.data.chart[5],
+        //                    e.data.chart[6]
+        //                ]
+        //            }]
+        //        };
+
+
+        //        var LineChart = new Chart(dvcht, {
+        //            type: 'bar',
+        //            data: barChartData,
+        //            options: {
+        //                responsive: true,
+        //                legend: {
+        //                    position: 'bottom'
+        //                },
+        //                animation: {
+        //                    duration: 0
+        //                }
+        //            }
+        //        });
+
+        //        window.coinchart = LineChart;
+
+        //        dvrow.appendChild(dvchart);
+
+        //        $('#main').css({ "background": "none" });
+        //    });
+
+        //    // TODO render pulse chart
+
+
+        //}
+
+        //if (window.view === "accounts") {
+        //    var pg = getParameterByName('page');
+        //    var sh = getParameterByName('show');
+        //    if (pg === null) pg = 1;
+        //    if (sh === null) sh = 11;
+        //    var adr = "/api/last/" + pg + "?show=" + sh + "&acc=" + window.holder;
+
+        //    $.get(adr, function (e) {
+
+
+        //        var h2acc = document.createElement("H2");
+        //        h2acc.setAttribute('class', 'PageHeader bold');
+
+
+        //        var icon = blockies.create({ // All options are optional
+        //            seed: window.holder.toLowerCase(), // seed used to generate icon data, default: random
+        //            //color: '#dfe', // to manually specify the icon color, default: random
+        //            //bgcolor: '#aaa', // choose a different background color, default: random
+        //            size: 8, // width/height of the icon in blocks, default: 8
+        //            scale: 16 // width/height of each block in pixels, default: 4
+        //            // spotcolor: '#000' // each pixel has a 13% chance of being of a third color, 
+        //            // default: random. Set to -1 to disable it. These "spots" create structures
+        //            // that look like eyes, mouths and noses. 
+        //        });
+
+        //        var img = document.createElement("div");
+        //        img.setAttribute('style', 'background-image: url(' + icon.toDataURL() + ');');
+        //        img.setAttribute('class', 'AccIcon');
+        //        img.setAttribute('data-toggle', 'tooltip');
+        //        img.setAttribute('title', window.lang.blockie);
+        //        h2acc.insertBefore(img, h2acc.childNodes[0]);
+
+        //        var htacc = document.createTextNode(window.lang.holder);
+        //        h2acc.appendChild(htacc);
+
+        //        if (e.data.acc === undefined) {
+
+        //            let p = ce("p"); Append(p, tn("'" + window.holder + "' " + window.lang.notfound));
+
+        //            content.appendChild(h2acc);
+        //            content.appendChild(p);
+        //            $('#main').css({ "background": "none" });
+        //            return;
+        //        }
+
+
+
+
+        //        let full = true;
+        //        //if (window.innerWidth < 600) full = false;
+        //        h2acc.appendChild(aAcc(e.data.acc, full, true));
+
+        //        let exch = document.createElement('a');
+        //        Append(h2acc, ce("br"));
+
+        //        let wal = window.wallets[e.data.acc.toLowerCase()];
+        //        if (wal !== undefined) {
+        //            var d = wal.name;
+        //            let l = ce('img'); l.src = wal.logo;
+        //            Attr(l, "style", "float: left; margin-right:5px; margin-top:3px; height: 16px; display: inline-block;");
+        //            Attr(exch, "class", "exch");
+        //            Attr(exch, "target", "_blank");
+        //            Attr(exch, "href", wal.site);
+
+
+        //            Append(exch, l);
+        //            let le = ce('img'); le.src = "/wallets/ext.svg"; Attr(le, "width", "11"); Attr(le, "style", "margin-top:-6px;margin-left:3px");
+        //            let se = ce('div'); Attr(se, "style", "display:inline-block; line-height: 18px; overflow: hidden; margin-top: 2px;"); Append(se, tn(d));
+        //            Append(exch, se);
+        //            Append(exch, le);
+        //            content.appendChild(h2acc);
+        //            content.appendChild(exch);
+        //        } else {
+
+        //            Append(exch, tn(d));
+        //            content.appendChild(h2acc);
+        //        }
+
+
+        //        $('[data-toggle="tooltip"]').tooltip();
+        //        //console.log(e);
+
+        //        if (e.data.totalcount === 0) {
+
+        //            var dvInfoNf = document.createElement("div");
+        //            dvInfoNf.setAttribute('class', 'container acchead');
+        //            dvInfoNf.appendChild(document.createTextNode(window.lang.notfound));
+        //            content.appendChild(dvInfoNf);
+        //            $('#main').css({ "background": "none" });
+        //        } else {
+
+        //            var dvInfo = document.createElement("div");
+        //            dvInfo.setAttribute('class', 'container acchead');
+        //            content.appendChild(dvInfo);
+
+        //            var dvIdr = document.createElement("div");
+        //            dvIdr.setAttribute('class', 'row accblock pt-2');
+
+        //            dvInfo.appendChild(dvIdr);
+
+        //            //var dvIA = document.createElement("div");
+        //            //dvIA.setAttribute('class', 'col');
+        //            //var hA = document.createElement("H4");
+        //            //hA.setAttribute('class', 'PageSubHeader');
+        //            //hA.appendChild(document.createTextNode(window.lang.addr));
+        //            //dvIA.appendChild(hA);
+        //            //dvIA.appendChild(document.createTextNode(window.holder));
+
+        //            //dvIdr.appendChild(dvIA);
+        //            var dvIbt = document.createElement("div");
+        //            dvIbt.setAttribute('class', 'col-lg');
+        //            dvIbt.setAttribute('style', '');
+        //            var hbt = document.createElement("H5");
+        //            hbt.setAttribute('class', '');
+
+        //            hbt.appendChild(document.createTextNode(window.lang.balance_token));
+        //            dvIbt.appendChild(hbt);
+
+        //            var numa = numfix(numeral("'" + e.data.balance_mnc + "'").format('0,0.000000000000000000'), ".")
+
+
+        //            if (numa === "0" && e.data.balance_mnc > 0) {
+        //                numa = mz(e.data.balance_mnc);
+        //            }
+        //            dvIbt.appendChild(document.createTextNode(numa));
+        //            dvIdr.appendChild(dvIbt);
+
+        //            var dvIbe = document.createElement("div");
+        //            dvIbe.setAttribute('class', 'col-lg');
+        //            var hbe = document.createElement("H5");
+        //            hbe.setAttribute('class', '');
+        //            hbe.appendChild(document.createTextNode(window.lang.balance_eth));
+        //            dvIbe.appendChild(hbe);
+
+
+
+        //            dvIbe.appendChild(document.createTextNode(numfix(numeral("'" + e.data.balance_eth + "'").format('0,0.000000000000000000'), ".")));
+
+        //            dvIdr.appendChild(dvIbe);
+
+        //            var dvIfe = document.createElement("div");
+        //            dvIfe.setAttribute('class', 'col-lg');
+        //            var hfe = document.createElement("H5");
+        //            hfe.setAttribute('class', '');
+        //            hfe.appendChild(document.createTextNode(window.lang.sum_fee));
+        //            dvIfe.appendChild(hfe);
+        //            dvIfe.appendChild(document.createTextNode(numfix(numeral("'" + e.data.sum_fee + "'").format('0,0.000000000000000000'), ".")));
+
+        //            dvIdr.appendChild(dvIfe);
+
+        //            //var dvItx = document.createElement("div");
+        //            //dvItx.setAttribute('class', 'col');
+        //            //var hC = document.createElement("H5");
+        //            //hC.setAttribute('class', 'PageSubHeader');
+        //            //hC.appendChild(document.createTextNode(window.lang.txs));
+        //            //dvItx.appendChild(hC);
+        //            //dvItx.appendChild(document.createTextNode(e.data.totalcount));
+
+        //            //dvIdr.appendChild(dvItx);
+
+        //            var dvIsi = document.createElement("div");
+        //            dvIsi.setAttribute('class', 'col-lg');
+        //            var hSi = document.createElement("H5");
+        //            hSi.setAttribute('class', '');
+        //            hSi.appendChild(document.createTextNode(window.lang.sum_in));
+        //            dvIsi.appendChild(hSi);
+
+        //            dvIsi.setAttribute('title', numfix(numeral("'" + e.data.sum_in + "'").format('0,0.000000000000000000'), ".") + " MNC");
+        //            dvIsi.appendChild(document.createTextNode(numfix(numeral("'" + e.data.sum_in + "'").format('0,0.00000000'), ".")));
+
+        //            dvIdr.appendChild(dvIsi);
+
+        //            var dvIso = document.createElement("div");
+        //            dvIso.setAttribute('class', 'col-lg');
+        //            var hSo = document.createElement("H5");
+        //            hSo.setAttribute('class', '');
+        //            hSo.appendChild(document.createTextNode(window.lang.sum_out));
+        //            dvIso.appendChild(hSo);
+        //            dvIso.setAttribute('title', numfix(numeral("'" + e.data.sum_out + "'").format('0,0.000000000000000000'), ".") + " MNC");
+        //            dvIso.setAttribute('data-toggle', "tooltip");
+        //            dvIso.appendChild(document.createTextNode(numfix(numeral("'" + e.data.sum_out + "'").format('0,0.00000000'), ".")));
+
+        //            dvIdr.appendChild(dvIso);
+
+
+        //            var table = document.createElement("TABLE");
+        //            table.setAttribute('class', 'table');
+        //            var trh = document.createElement('tr');
+        //            var thh = document.createElement('th');
+        //            thh.appendChild(document.createTextNode(window.lang.hash));
+        //            trh.appendChild(thh);
+
+        //            var tha = document.createElement('th');
+        //            tha.appendChild(document.createTextNode(window.lang.age));
+        //            tha.setAttribute('class', 'hidemobile');
+        //            trh.appendChild(tha);
+
+        //            var ths = document.createElement('th');
+        //            ths.appendChild(document.createTextNode(window.lang.sender));
+        //            ths.setAttribute('class', 'hidemobile');
+        //            trh.appendChild(ths);
+
+        //            var thar = document.createElement('th');
+        //            thar.appendChild(document.createTextNode(""));
+        //            trh.appendChild(thar);
+
+        //            var thr = document.createElement('th');
+        //            thr.appendChild(document.createTextNode(window.lang.recipient));
+        //            thr.setAttribute('class', 'hidemobile');
+        //            trh.appendChild(thr);
+
+        //            var thq = document.createElement('th');
+        //            thq.appendChild(document.createTextNode(window.lang.amount + " MNC"));
+        //            trh.appendChild(thq);
 
-                    table.appendChild(trh);
+        //            table.appendChild(trh);
 
-                    for (var i = 0; i < e.data.list.length; i++) {
+        //            for (var i = 0; i < e.data.list.length; i++) {
 
-                        var dr = e.data.list[i];
-                        var tr = document.createElement('tr');
+        //                var dr = e.data.list[i];
+        //                var tr = document.createElement('tr');
 
-                        var tdh = document.createElement('td');
-                        tdh.appendChild(aHash(dr["txhash"]));
-                        tr.appendChild(tdh);
+        //                var tdh = document.createElement('td');
+        //                tdh.appendChild(aHash(dr["txhash"]));
+        //                tr.appendChild(tdh);
 
-                        var tdAge = document.createElement('td');
-                        var txtime = dr["txtime"] * 1000;
+        //                var tdAge = document.createElement('td');
+        //                var txtime = dr["txtime"] * 1000;
 
-                        var inout = window.lang.in;
-                        var inoutcss = "in";
+        //                var inout = window.lang.in;
+        //                var inoutcss = "in";
 
 
-                        var age = moment(txtime);
-                        var tna = document.createTextNode(age.fromNow(true));
-                        tdAge.appendChild(tna);
-                        tdAge.setAttribute('data-toggle', 'tooltip');
-                        tdAge.setAttribute('title', age.format('LLL'));
-                        tdAge.setAttribute('class', 'hidemobile');
-                        tr.appendChild(tdAge);
+        //                var age = moment(txtime);
+        //                var tna = document.createTextNode(age.fromNow(true));
+        //                tdAge.appendChild(tna);
+        //                tdAge.setAttribute('data-toggle', 'tooltip');
+        //                tdAge.setAttribute('title', age.format('LLL'));
+        //                tdAge.setAttribute('class', 'hidemobile');
+        //                tr.appendChild(tdAge);
 
-                        var tdFrom = document.createElement('td');
-                        var from = document.createTextNode(window.lang.holder);
-                        let walfrom = window.wallets[dr["txfrom"].toLowerCase()];
-                        if (dr["txfrom"] !== window.holder || walfrom !== undefined) from = aAcc(dr["txfrom"], false, false);
+        //                var tdFrom = document.createElement('td');
+        //                var from = document.createTextNode(window.lang.holder);
+        //                let walfrom = window.wallets[dr["txfrom"].toLowerCase()];
+        //                if (dr["txfrom"] !== window.holder || walfrom !== undefined) from = aAcc(dr["txfrom"], false, false);
 
-                        tdFrom.appendChild(from);
-                        tdFrom.setAttribute('class', 'hidemobile');
-                        tr.appendChild(tdFrom);
+        //                tdFrom.appendChild(from);
+        //                tdFrom.setAttribute('class', 'hidemobile');
+        //                tr.appendChild(tdFrom);
 
-                        var tdarr = document.createElement('td');
-                        var sparr = document.createElement('span');
-                        if (dr["txto"] !== window.holder) {
-                            inout = window.lang.out;
-                            inoutcss = "out";
-                        }
-                        sparr.setAttribute('class', 'sparr ' + inoutcss);
-                        sparr.appendChild(document.createTextNode(inout));
-                        tdarr.appendChild(sparr);
-                        tr.appendChild(tdarr);
+        //                var tdarr = document.createElement('td');
+        //                var sparr = document.createElement('span');
+        //                if (dr["txto"] !== window.holder) {
+        //                    inout = window.lang.out;
+        //                    inoutcss = "out";
+        //                }
+        //                sparr.setAttribute('class', 'sparr ' + inoutcss);
+        //                sparr.appendChild(document.createTextNode(inout));
+        //                tdarr.appendChild(sparr);
+        //                tr.appendChild(tdarr);
 
-                        var tdTo = document.createElement('td');
-                        var to = document.createTextNode(window.lang.holder);
-                        let walto = window.wallets[dr["txto"].toLowerCase()];
-                        if (dr["txto"] !== window.holder || walto !== undefined) to = aAcc(dr["txto"], false, false);
-                        tdTo.setAttribute('class', 'hidemobile');
-                        tdTo.appendChild(to);
-                        tr.appendChild(tdTo);
+        //                var tdTo = document.createElement('td');
+        //                var to = document.createTextNode(window.lang.holder);
+        //                let walto = window.wallets[dr["txto"].toLowerCase()];
+        //                if (dr["txto"] !== window.holder || walto !== undefined) to = aAcc(dr["txto"], false, false);
+        //                tdTo.setAttribute('class', 'hidemobile');
+        //                tdTo.appendChild(to);
+        //                tr.appendChild(tdTo);
 
-                        var tdTotal = document.createElement('td');
-                        let deci = dr["txvs"].split(".");
-                        if (deci.length === 2) deci = "." + deci[1];
-                        else deci = "";
-                        var tnt = document.createTextNode(numfix(numeral("'" + dr["txvalue"] + "'").format('0,0'), ".") + deci);
-                        tdTotal.appendChild(tnt);
-                        tr.appendChild(tdTotal);
+        //                var tdTotal = document.createElement('td');
+        //                let deci = dr["txvs"].split(".");
+        //                if (deci.length === 2) deci = "." + deci[1];
+        //                else deci = "";
+        //                var tnt = document.createTextNode(numfix(numeral("'" + dr["txvalue"] + "'").format('0,0'), ".") + deci);
+        //                tdTotal.appendChild(tnt);
+        //                tr.appendChild(tdTotal);
 
 
 
-                        table.appendChild(tr);
-                    }
+        //                table.appendChild(tr);
+        //            }
 
-                    var h2lst = document.createElement("H5");
-                    h2lst.setAttribute('class', '');
-                    h2lst.appendChild(document.createTextNode(window.lang.txs + " " + numeral("'" + e.data.totalcount + "'").format('0,0')));
-                    content.appendChild(h2lst);
+        //            var h2lst = document.createElement("H5");
+        //            h2lst.setAttribute('class', '');
+        //            h2lst.appendChild(document.createTextNode(window.lang.txs + " " + numeral("'" + e.data.totalcount + "'").format('0,0')));
+        //            content.appendChild(h2lst);
 
-                    content.appendChild(table);
+        //            content.appendChild(table);
 
-                }
+        //        }
 
-                if (e.data.pages > 1)
-                    content.appendChild(Pager(e));
+        //        if (e.data.pages > 1)
+        //            content.appendChild(Pager(e));
 
 
-                $('#main').css({ "background": "none" });
+        //        $('#main').css({ "background": "none" });
 
-            });
+        //    });
 
-        }
+        //}
 
-        if (window.view === "top" || window.view === "topex") {
+        //if (window.view === "top" || window.view === "topex") {
 
 
-            var hpg = getParameterByName('page');
-            var hsh = getParameterByName('show');
-            if (hpg === null) hpg = 1;
-            if (hsh === null) hsh = 11;
+        //    var hpg = getParameterByName('page');
+        //    var hsh = getParameterByName('show');
+        //    if (hpg === null) hpg = 1;
+        //    if (hsh === null) hsh = 11;
 
-            var hadr = "/api/holders/?view=" + window.view + "&page=" + hpg + "&show=" + hsh;
+        //    var hadr = "/api/holders/?view=" + window.view + "&page=" + hpg + "&show=" + hsh;
 
 
 
 
-            $.get(hadr, function (e) {
+        //    $.get(hadr, function (e) {
 
-                var tabh = document.createElement("TABLE");
-                tabh.setAttribute('class', 'table');
-                var trhl = document.createElement('tr');
+        //        var tabh = document.createElement("TABLE");
+        //        tabh.setAttribute('class', 'table');
+        //        var trhl = document.createElement('tr');
 
 
-                var thhd = document.createElement('th');
-                thhd.appendChild(document.createTextNode(window.lang.holder));
-                trhl.appendChild(thhd);
+        //        var thhd = document.createElement('th');
+        //        thhd.appendChild(document.createTextNode(window.lang.holder));
+        //        trhl.appendChild(thhd);
 
-                var thbh = document.createElement('th');
-                thbh.appendChild(document.createTextNode(window.lang.balance_token));
-                trhl.appendChild(thbh);
+        //        var thbh = document.createElement('th');
+        //        thbh.appendChild(document.createTextNode(window.lang.balance_token));
+        //        trhl.appendChild(thbh);
 
-                var thra = document.createElement('th');
-                thra.setAttribute('class', 'hidemobile');
-                thra.appendChild(document.createTextNode(window.lang.balance_eth));
-                trhl.appendChild(thra);
+        //        var thra = document.createElement('th');
+        //        thra.setAttribute('class', 'hidemobile');
+        //        thra.appendChild(document.createTextNode(window.lang.balance_eth));
+        //        trhl.appendChild(thra);
 
-                let thp = document.createElement('th');
-                thp.setAttribute('class', 'hidemobile');
-                thp.appendChild(document.createTextNode(window.lang.balance_per));
-                trhl.appendChild(thp);
+        //        let thp = document.createElement('th');
+        //        thp.setAttribute('class', 'hidemobile');
+        //        thp.appendChild(document.createTextNode(window.lang.balance_per));
+        //        trhl.appendChild(thp);
 
-                tabh.appendChild(trhl);
+        //        tabh.appendChild(trhl);
 
-                let ts = coin.data.apis.avtomain.circulating_supply;
+        //        let ts = coin.data.apis.avtomain.circulating_supply;
 
-                for (var h = 0; h < e.data.list.length; h++) {
+        //        for (var h = 0; h < e.data.list.length; h++) {
 
-                    var drh = e.data.list[h];
-                    var t = document.createElement('tr');
+        //            var drh = e.data.list[h];
+        //            var t = document.createElement('tr');
 
-                    var tdhl = document.createElement('td');
-                    from = aAcc(drh["pubkey"], false, false);
-                    tdhl.appendChild(document.createTextNode(drh["rnum"] + " "));
-                    tdhl.appendChild(from);
-                    t.appendChild(tdhl);
+        //            var tdhl = document.createElement('td');
+        //            from = aAcc(drh["pubkey"], false, false);
+        //            tdhl.appendChild(document.createTextNode(drh["rnum"] + " "));
+        //            tdhl.appendChild(from);
+        //            t.appendChild(tdhl);
 
-                    var tdbt = document.createElement('td');
+        //            var tdbt = document.createElement('td');
 
-                    let dbt = drh["bts"].split(".");
-                    if (dbt.length === 2) dbt = "." + dbt[1];
-                    else dbt = "";
-                    var tnbt = document.createTextNode(numfix(numeral("'" + drh["bts"] + "'").format('0,0'), ".") + dbt);
-                    tdbt.appendChild(tnbt);
+        //            let dbt = drh["bts"].split(".");
+        //            if (dbt.length === 2) dbt = "." + dbt[1];
+        //            else dbt = "";
+        //            var tnbt = document.createTextNode(numfix(numeral("'" + drh["bts"] + "'").format('0,0'), ".") + dbt);
+        //            tdbt.appendChild(tnbt);
 
-                    let currmnc = ce("span"); Attr(currmnc, "class", "currmnc"); Attr(currmnc, "data-value", drh["bts"]);
-                    if (window.price !== undefined) {
+        //            let currmnc = ce("span"); Attr(currmnc, "class", "currmnc"); Attr(currmnc, "data-value", drh["bts"]);
+        //            if (window.price !== undefined) {
 
-                        let mnc = drh["bts"];
-                        let fiat = numeral(mnc * window.price).format('0,0.00');
+        //                let mnc = drh["bts"];
+        //                let fiat = numeral(mnc * window.price).format('0,0.00');
 
-                        let sy = ce("b"); Append(sy, tn(symb));
-                        Append(currmnc, tn("(")); Append(currmnc, sy); Append(currmnc, tn(" " + fiat + ")"));
-                    }
+        //                let sy = ce("b"); Append(sy, tn(symb));
+        //                Append(currmnc, tn("(")); Append(currmnc, sy); Append(currmnc, tn(" " + fiat + ")"));
+        //            }
 
-                    tdbt.appendChild(currmnc);
+        //            tdbt.appendChild(currmnc);
 
 
-                    t.appendChild(tdbt);
+        //            t.appendChild(tdbt);
 
-                    var tdbb = document.createElement('td');
-                    tdbb.setAttribute('class', 'hidemobile');
-                    let dbb = drh["bbs"].split(".");
-                    if (dbb.length === 2) dbb = "." + dbb[1];
-                    else dbb = "";
-                    var tnbb = document.createTextNode(numfix(numeral("'" + drh["bbs"] + "'").format('0,0'), ".") + dbb);
+        //            var tdbb = document.createElement('td');
+        //            tdbb.setAttribute('class', 'hidemobile');
+        //            let dbb = drh["bbs"].split(".");
+        //            if (dbb.length === 2) dbb = "." + dbb[1];
+        //            else dbb = "";
+        //            var tnbb = document.createTextNode(numfix(numeral("'" + drh["bbs"] + "'").format('0,0'), ".") + dbb);
 
 
-                    tdbb.appendChild(tnbb);
+        //            tdbb.appendChild(tnbb);
 
-                    let curreth = ce("span"); Attr(curreth, "class", "curreth"); Attr(curreth, "data-value", drh["bbs"]);
-                    if (window.price !== undefined) {
-                        let cur = localStorage.getItem('cur');
-                        if (cur === null) cur = "USD";
+        //            let curreth = ce("span"); Attr(curreth, "class", "curreth"); Attr(curreth, "data-value", drh["bbs"]);
+        //            if (window.price !== undefined) {
+        //                let cur = localStorage.getItem('cur');
+        //                if (cur === null) cur = "USD";
 
-                        let usdVal = parseFloat(drh["bbs"]) * parseFloat(coin.data.apis.etherscan_eth.result.ethusd);
+        //                let usdVal = parseFloat(drh["bbs"]) * parseFloat(coin.data.apis.etherscan_eth.result.ethusd);
 
-                        let priceUsd = 1;
-                        let calcPrice = 1;
+        //                let priceUsd = 1;
+        //                let calcPrice = 1;
 
-                        if (cur.endsWith(".")) {
-                            priceUsd = window.coin.data.apis.p2pb2b[cur.replace(".", "")];
-                            calcPrice = usdVal / priceUsd;
-                        } else {
-                            priceUsd = window.coin.data.apis.usd.rates[cur.replace(".", "")];
-                            calcPrice = priceUsd * usdVal;
-                        }
+        //                if (cur.endsWith(".")) {
+        //                    priceUsd = window.coin.data.apis.p2pb2b[cur.replace(".", "")];
+        //                    calcPrice = usdVal / priceUsd;
+        //                } else {
+        //                    priceUsd = window.coin.data.apis.usd.rates[cur.replace(".", "")];
+        //                    calcPrice = priceUsd * usdVal;
+        //                }
 
-                        let fiat = numeral(calcPrice).format('0,0.00');
+        //                let fiat = numeral(calcPrice).format('0,0.00');
 
-                        let sy = ce("b"); Append(sy, tn(symb));
+        //                let sy = ce("b"); Append(sy, tn(symb));
 
 
-                        Append(curreth, tn("(")); Append(curreth, sy); Append(curreth, tn(" " + fiat + " )"));
-                    }
-                    tdbb.appendChild(curreth);
+        //                Append(curreth, tn("(")); Append(curreth, sy); Append(curreth, tn(" " + fiat + " )"));
+        //            }
+        //            tdbb.appendChild(curreth);
 
-                    t.appendChild(tdbb);
+        //            t.appendChild(tdbb);
 
-                    // mnc - per
-                    // ts - 100 
-                    // per = mnc*100/ts
+        //            // mnc - per
+        //            // ts - 100 
+        //            // per = mnc*100/ts
 
-                    let perc = numeral("'" + drh["balancetoken"] + "'").value() * 100 / ts;
-                    let percv = numeral("'" + drh["balancetoken"] + "'").value() * 100 / coin.data.topholder;
+        //            let perc = numeral("'" + drh["balancetoken"] + "'").value() * 100 / ts;
+        //            let percv = numeral("'" + drh["balancetoken"] + "'").value() * 100 / coin.data.topholder;
 
-                    let tdper = document.createElement('td');
-                    Attr(tdper, 'class', 'hidemobile');
-                    tdper.appendChild(tn(numeral("'" + perc + "'").format('0,0.0000') + "%")); //Append(tdper, ce("br"));
-                    let bar = ce("div"); let barw = ce("div"); Attr(bar, "class", "percentc"); Attr(barw, "style", "width: " + percv + "%"); Attr(barw, "class", "percentbar"); Append(bar, barw); Append(tdper, bar);
-                    t.appendChild(tdper);
+        //            let tdper = document.createElement('td');
+        //            Attr(tdper, 'class', 'hidemobile');
+        //            tdper.appendChild(tn(numeral("'" + perc + "'").format('0,0.0000') + "%")); //Append(tdper, ce("br"));
+        //            let bar = ce("div"); let barw = ce("div"); Attr(bar, "class", "percentc"); Attr(barw, "style", "width: " + percv + "%"); Attr(barw, "class", "percentbar"); Append(bar, barw); Append(tdper, bar);
+        //            t.appendChild(tdper);
 
-                    //TTTT
-                    tabh.appendChild(t);
-                }
+        //            //TTTT
+        //            tabh.appendChild(t);
+        //        }
 
-                var h2top = document.createElement("H2");
-                h2top.setAttribute('class', 'PageHeader');
-                h2top.appendChild(document.createTextNode(window.lang.top + " " + numeral("'" + e.data.totalcount + "'").format('0,0')));
-                content.appendChild(h2top);
+        //        var h2top = document.createElement("H2");
+        //        h2top.setAttribute('class', 'PageHeader');
+        //        h2top.appendChild(document.createTextNode(window.lang.top + " " + numeral("'" + e.data.totalcount + "'").format('0,0')));
+        //        content.appendChild(h2top);
 
-                content.appendChild(tabh);
-                if (e.data.pages > 0)
-                    content.appendChild(Pager(e));
+        //        content.appendChild(tabh);
+        //        if (e.data.pages > 0)
+        //            content.appendChild(Pager(e));
 
 
-                let tte = document.createElement("div"); tte.setAttribute('class', 'btn-group mt-3'); Append(h2top, ce("br"));
-                Append(h2top, tte);
+        //        let tte = document.createElement("div"); tte.setAttribute('class', 'btn-group mt-3'); Append(h2top, ce("br"));
+        //        Append(h2top, tte);
 
-                let btall = document.createElement("a"); btall.setAttribute('href', '/' + parcedlng + "/top/");
-                if (window.view === "top") btall.setAttribute('class', 'btn btn-primary btn-sm');
-                else btall.setAttribute('class', 'btn btn-outline-primary btn-sm');
+        //        let btall = document.createElement("a"); btall.setAttribute('href', '/' + parcedlng + "/top/");
+        //        if (window.view === "top") btall.setAttribute('class', 'btn btn-primary btn-sm');
+        //        else btall.setAttribute('class', 'btn btn-outline-primary btn-sm');
 
-                Append(btall, tn(window.lang.topall)); Append(tte, btall);
-                let btex = document.createElement("a"); btex.setAttribute('href', '/' + parcedlng + "/topex/");
-                if (window.view === "topex") btex.setAttribute('class', 'btn btn-primary btn-sm');
-                else btex.setAttribute('class', 'btn btn-outline-primary btn-sm');
-                Append(btex, tn(window.lang.topex)); Append(tte, btex);
-                if (window.view === "topex") {
+        //        Append(btall, tn(window.lang.topall)); Append(tte, btall);
+        //        let btex = document.createElement("a"); btex.setAttribute('href', '/' + parcedlng + "/topex/");
+        //        if (window.view === "topex") btex.setAttribute('class', 'btn btn-primary btn-sm');
+        //        else btex.setAttribute('class', 'btn btn-outline-primary btn-sm');
+        //        Append(btex, tn(window.lang.topex)); Append(tte, btex);
+        //        if (window.view === "topex") {
 
-                    let exs = numeral("'" + coin.data.exsum + "'").format('0,0.0000').replace(".0000", "");
+        //            let exs = numeral("'" + coin.data.exsum + "'").format('0,0.0000').replace(".0000", "");
 
-                    let exsum = ce("div"); Attr(exsum, "style", "margin-top: 28px; float: right; font-size: 12pt;");
+        //            let exsum = ce("div"); Attr(exsum, "style", "margin-top: 28px; float: right; font-size: 12pt;");
 
-                    let mnc = ce("span"); Append(mnc, tn(" MNC")); Attr(mnc, "style", "font-size: 12px;")
-                    Append(exsum, tn(window.lang.itogo + ": ")); Append(exsum, tn(exs)); Append(exsum, mnc);
-                    Append(h2top, exsum);
+        //            let mnc = ce("span"); Append(mnc, tn(" MNC")); Attr(mnc, "style", "font-size: 12px;")
+        //            Append(exsum, tn(window.lang.itogo + ": ")); Append(exsum, tn(exs)); Append(exsum, mnc);
+        //            Append(h2top, exsum);
 
-                }
+        //        }
 
 
-                $('#main').css({ "background": "none" });
+        //        $('#main').css({ "background": "none" });
 
 
-            });
+        //    });
 
-        }
+        //}
 
-        if (window.view === "tx") {
+        //if (window.view === "tx") {
 
-            var h2th = document.createElement("H2");
-            h2th.setAttribute('class', 'PageHeader');
-            var htth = document.createTextNode(window.lang.tx);
-            h2th.appendChild(htth);
-            h2th.appendChild(aHash(window.txh));
-            content.appendChild(h2th);
+        //    var h2th = document.createElement("H2");
+        //    h2th.setAttribute('class', 'PageHeader');
+        //    var htth = document.createTextNode(window.lang.tx);
+        //    h2th.appendChild(htth);
+        //    h2th.appendChild(aHash(window.txh));
+        //    content.appendChild(h2th);
 
 
 
 
-            $.get("/api/tx/" + window.txh, function (h) {
+        //    $.get("/api/tx/" + window.txh, function (h) {
 
-                if (h.data.length === 0) {
+        //        if (h.data.length === 0) {
 
-                    var dvInfoh = document.createElement("p");
-                    //dvInfoh.setAttribute('class', 'container');
-                    dvInfoh.appendChild(document.createTextNode(window.lang.notfound));
-                    content.appendChild(dvInfoh);
+        //            var dvInfoh = document.createElement("p");
+        //            //dvInfoh.setAttribute('class', 'container');
+        //            dvInfoh.appendChild(document.createTextNode(window.lang.notfound));
+        //            content.appendChild(dvInfoh);
 
 
 
-                } else {
+        //        } else {
 
-                    var dvtc = document.createElement("div");
-                    dvtc.setAttribute('class', 'container');
-                    content.appendChild(dvtc);
+        //            var dvtc = document.createElement("div");
+        //            dvtc.setAttribute('class', 'container');
+        //            content.appendChild(dvtc);
 
-                    var dvTdr = document.createElement("div");
-                    dvTdr.setAttribute('class', 'row HT');
-                    dvtc.appendChild(dvTdr);
+        //            var dvTdr = document.createElement("div");
+        //            dvTdr.setAttribute('class', 'row HT');
+        //            dvtc.appendChild(dvTdr);
 
 
-                    var dvTf = document.createElement("div");
-                    dvTf.setAttribute('class', 'col');
-                    var hTf = document.createElement("H4");
-                    hTf.setAttribute('class', 'PageSubHeader');
-                    hTf.appendChild(document.createTextNode(window.lang.sender));
-                    hTf.appendChild(aAcc(h.data[0].txfrom, false, false));
-                    dvTf.appendChild(hTf);
-                    dvTf.appendChild(document.createTextNode(h.data[0].txfrom));
-                    dvTdr.appendChild(dvTf);
+        //            var dvTf = document.createElement("div");
+        //            dvTf.setAttribute('class', 'col');
+        //            var hTf = document.createElement("H4");
+        //            hTf.setAttribute('class', 'PageSubHeader');
+        //            hTf.appendChild(document.createTextNode(window.lang.sender));
+        //            hTf.appendChild(aAcc(h.data[0].txfrom, false, false));
+        //            dvTf.appendChild(hTf);
+        //            dvTf.appendChild(document.createTextNode(h.data[0].txfrom));
+        //            dvTdr.appendChild(dvTf);
 
-                    var dvTv = document.createElement("div");
-                    dvTv.setAttribute('class', 'col bigarror justify-content-center');
-                    var numv = numfix(numeral("'" + h.data[0].txvalue + "'").format('0,0.000000'), ".");
+        //            var dvTv = document.createElement("div");
+        //            dvTv.setAttribute('class', 'col bigarror justify-content-center');
+        //            var numv = numfix(numeral("'" + h.data[0].txvalue + "'").format('0,0.000000'), ".");
 
-                    let deci = h.data[0].txvs.split(".");
-                    if (deci.length === 2) deci = "." + deci[1];
-                    else deci = "";
-                    var tnt = numfix(numeral("'" + h.data[0].txvs + "'").format('0,0'), ".") + deci;
+        //            let deci = h.data[0].txvs.split(".");
+        //            if (deci.length === 2) deci = "." + deci[1];
+        //            else deci = "";
+        //            var tnt = numfix(numeral("'" + h.data[0].txvs + "'").format('0,0'), ".") + deci;
 
-                    dvTv.setAttribute('title', tnt + " MNC");
+        //            dvTv.setAttribute('title', tnt + " MNC");
 
 
-                    dvTv.appendChild(document.createTextNode(numv + " MNC"));
-                    dvTdr.appendChild(dvTv);
+        //            dvTv.appendChild(document.createTextNode(numv + " MNC"));
+        //            dvTdr.appendChild(dvTv);
 
-                    var dvTto = document.createElement("div");
-                    dvTto.setAttribute('class', 'col text-right');
-                    var hTto = document.createElement("H4");
-                    hTto.setAttribute('class', 'PageSubHeader justify-content-end text-right');
-                    hTto.appendChild(document.createTextNode(window.lang.recipient));
-                    hTto.appendChild(aAcc(h.data[0].txto, false, false));
-                    dvTto.appendChild(hTto);
-                    dvTto.appendChild(document.createTextNode(h.data[0].txto));
-                    dvTdr.appendChild(dvTto);
+        //            var dvTto = document.createElement("div");
+        //            dvTto.setAttribute('class', 'col text-right');
+        //            var hTto = document.createElement("H4");
+        //            hTto.setAttribute('class', 'PageSubHeader justify-content-end text-right');
+        //            hTto.appendChild(document.createTextNode(window.lang.recipient));
+        //            hTto.appendChild(aAcc(h.data[0].txto, false, false));
+        //            dvTto.appendChild(hTto);
+        //            dvTto.appendChild(document.createTextNode(h.data[0].txto));
+        //            dvTdr.appendChild(dvTto);
 
 
-                    var dvTdrd = document.createElement("div");
-                    dvTdrd.setAttribute('class', 'row');
-                    dvtc.appendChild(dvTdrd);
-                    var txtime = h.data[0].txtime * 1000;
-                    var ag = moment(txtime);
-                    var ta = document.createTextNode(ag.format('LLL'));
+        //            var dvTdrd = document.createElement("div");
+        //            dvTdrd.setAttribute('class', 'row');
+        //            dvtc.appendChild(dvTdrd);
+        //            var txtime = h.data[0].txtime * 1000;
+        //            var ag = moment(txtime);
+        //            var ta = document.createTextNode(ag.format('LLL'));
 
-                    var dvTtime = document.createElement("div");
-                    dvTtime.setAttribute('class', 'col');
-                    var hTtime = document.createElement("H4");
-                    hTtime.setAttribute('class', 'PageSubHeader');
-                    hTtime.appendChild(document.createTextNode(window.lang.time));
-                    dvTtime.appendChild(hTtime);
-                    dvTtime.appendChild(ta);
-                    dvTtime.appendChild(document.createElement("br"));
-                    // dvTtime.appendChild(document.createTextNode(ag.fromNow()));
-                    dvTdrd.appendChild(dvTtime);
+        //            var dvTtime = document.createElement("div");
+        //            dvTtime.setAttribute('class', 'col');
+        //            var hTtime = document.createElement("H4");
+        //            hTtime.setAttribute('class', 'PageSubHeader');
+        //            hTtime.appendChild(document.createTextNode(window.lang.time));
+        //            dvTtime.appendChild(hTtime);
+        //            dvTtime.appendChild(ta);
+        //            dvTtime.appendChild(document.createElement("br"));
+        //            // dvTtime.appendChild(document.createTextNode(ag.fromNow()));
+        //            dvTdrd.appendChild(dvTtime);
 
-                    var dvTn = document.createElement("div");
-                    dvTn.setAttribute('class', 'col text-center');
-                    var hTn = document.createElement("H4");
-                    hTn.setAttribute('class', 'PageSubHeader text-center');
-                    hTn.appendChild(document.createTextNode("Nonce"));
-                    dvTn.appendChild(hTn);
-                    dvTn.appendChild(document.createTextNode(h.data[0].nonce));
-                    dvTdrd.appendChild(dvTn);
+        //            var dvTn = document.createElement("div");
+        //            dvTn.setAttribute('class', 'col text-center');
+        //            var hTn = document.createElement("H4");
+        //            hTn.setAttribute('class', 'PageSubHeader text-center');
+        //            hTn.appendChild(document.createTextNode("Nonce"));
+        //            dvTn.appendChild(hTn);
+        //            dvTn.appendChild(document.createTextNode(h.data[0].nonce));
+        //            dvTdrd.appendChild(dvTn);
 
-                    var dvTfee = document.createElement("div");
-                    dvTfee.setAttribute('class', 'col text-center');
-                    var hTfee = document.createElement("H4");
-                    hTfee.setAttribute('class', 'PageSubHeader text-center');
-                    var numfee = numeral("'" + h.data[0].txfee + "'").format('0,0.000000000').replace(".000000000", "");
-                    hTfee.appendChild(document.createTextNode(window.lang.fee));
-                    dvTfee.appendChild(hTfee);
-                    dvTfee.appendChild(document.createTextNode(numfee));
-                    dvTdrd.appendChild(dvTfee);
+        //            var dvTfee = document.createElement("div");
+        //            dvTfee.setAttribute('class', 'col text-center');
+        //            var hTfee = document.createElement("H4");
+        //            hTfee.setAttribute('class', 'PageSubHeader text-center');
+        //            var numfee = numeral("'" + h.data[0].txfee + "'").format('0,0.000000000').replace(".000000000", "");
+        //            hTfee.appendChild(document.createTextNode(window.lang.fee));
+        //            dvTfee.appendChild(hTfee);
+        //            dvTfee.appendChild(document.createTextNode(numfee));
+        //            dvTdrd.appendChild(dvTfee);
 
-                    var dvTgp = document.createElement("div");
-                    dvTgp.setAttribute('class', 'col justify-content-end text-right');
-                    var hTgp = document.createElement("H4");
-                    hTgp.setAttribute('class', 'PageSubHeader justify-content-end text-right');
-                    hTgp.appendChild(document.createTextNode(window.lang.gp));
-                    dvTgp.appendChild(hTgp);
-                    dvTgp.appendChild(document.createTextNode(h.data[0].gasprice + "Gwei"));
-                    dvTdrd.appendChild(dvTgp);
+        //            var dvTgp = document.createElement("div");
+        //            dvTgp.setAttribute('class', 'col justify-content-end text-right');
+        //            var hTgp = document.createElement("H4");
+        //            hTgp.setAttribute('class', 'PageSubHeader justify-content-end text-right');
+        //            hTgp.appendChild(document.createTextNode(window.lang.gp));
+        //            dvTgp.appendChild(hTgp);
+        //            dvTgp.appendChild(document.createTextNode(h.data[0].gasprice + "Gwei"));
+        //            dvTdrd.appendChild(dvTgp);
 
-                    //var dvTb = document.createElement("div");
-                    //dvTb.setAttribute('class', 'col justify-content-end text-right');
-                    //var hTb = document.createElement("H4");
-                    //hTb.setAttribute('class', 'PageSubHeader');
-                    //hTb.appendChild(document.createTextNode(window.lang.block));
-                    //dvTb.appendChild(hTb);
-                    //dvTb.appendChild(document.createTextNode(h.data[0].block));
-                    //dvTdrd.appendChild(dvTb);
+        //            //var dvTb = document.createElement("div");
+        //            //dvTb.setAttribute('class', 'col justify-content-end text-right');
+        //            //var hTb = document.createElement("H4");
+        //            //hTb.setAttribute('class', 'PageSubHeader');
+        //            //hTb.appendChild(document.createTextNode(window.lang.block));
+        //            //dvTb.appendChild(hTb);
+        //            //dvTb.appendChild(document.createTextNode(h.data[0].block));
+        //            //dvTdrd.appendChild(dvTb);
 
-                    var dvThash = document.createElement("div");
-                    dvThash.setAttribute('class', 'col');
-                    dvThash.setAttribute('style', 'padding-left: 0px !important;');
-                    var hTh = document.createElement("H4");
-                    hTh.setAttribute('class', 'PageSubHeader2');
-                    hTh.appendChild(document.createTextNode(window.lang.hash));
-                    content.appendChild(hTh);
-                    dvThash.appendChild(document.createTextNode(h.data[0].txhash));
-                    content.appendChild(dvThash);
+        //            var dvThash = document.createElement("div");
+        //            dvThash.setAttribute('class', 'col');
+        //            dvThash.setAttribute('style', 'padding-left: 0px !important;');
+        //            var hTh = document.createElement("H4");
+        //            hTh.setAttribute('class', 'PageSubHeader2');
+        //            hTh.appendChild(document.createTextNode(window.lang.hash));
+        //            content.appendChild(hTh);
+        //            dvThash.appendChild(document.createTextNode(h.data[0].txhash));
+        //            content.appendChild(dvThash);
 
-                    $('#main').css({ "background": "none" });
+        //            $('#main').css({ "background": "none" });
 
-                }
-                window.setTimeout("$('[data-toggle=\"tooltip\"]').tooltip()", 1000);
+        //        }
+        //        window.setTimeout("$('[data-toggle=\"tooltip\"]').tooltip()", 1000);
 
-            });
+        //    });
 
 
 
-        }
+        //}
 
 
 
@@ -2030,5 +1904,6 @@ function detectmob() {
     }
 
 })();
+
 init();
 

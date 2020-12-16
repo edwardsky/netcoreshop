@@ -26,6 +26,7 @@ namespace NetCoreShop
         public static string Yoomoney = null;
         public static string PSQL = null;
         public static string RCON = null;
+        public static bool RCONTEST = false;
 
         public static string RSAKEYserver = null;
         public static string RSAKEYpublic = null;
@@ -79,6 +80,7 @@ namespace NetCoreShop
             if (Yoomoney is null) Console.WriteLine("WARN: Yoomoney is not setup");
 
             RCON = Configuration["RCON"];
+            RCONTEST = bool.Parse(Configuration["RCONTEST"]);
             if (RCON is null) Console.WriteLine("WARN: RCON is not setup");
 
             services.AddControllers();
