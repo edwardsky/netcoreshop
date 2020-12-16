@@ -1,6 +1,6 @@
 # NetCoreShop .Net core shop site
 
-![.NET](https://github.com/edwardsky/netcoreshop/workflows/.NET/badge.svg)
+![.NET](https://github.com/edwardsky/netcoreshop/workflows/.NET/badge.svg) ![https://github.com/edwardsky/netcoreshop/issues](https://img.shields.io/github/issues/edwardsky/netcoreshop) ![https://github.com/edwardsky/netcoreshop/blob/master/LICENSE](https://img.shields.io/github/license/edwardsky/netcoreshop)
 
 # Features Business 
 
@@ -17,7 +17,7 @@
   - Settings  
 - User profile
 - User secure page
-- Nice custum desing homepage
+- Nice custom desing homepage
 - Nice JS system menu widget
 - Nice JS category menu widget
 - Shopping cart
