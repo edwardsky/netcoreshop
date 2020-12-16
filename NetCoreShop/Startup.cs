@@ -25,6 +25,7 @@ namespace NetCoreShop
         //Todo read from config
         public static string Yoomoney = null;
         public static string PSQL = null;
+        public static string RCON = null;
 
         public static string RSAKEYserver = null;
         public static string RSAKEYpublic = null;
@@ -72,11 +73,15 @@ namespace NetCoreShop
         {
             
             PSQL = Configuration["psql"];            
+            if (PSQL is null) Console.WriteLine("WARN: PSQL is not setup");
+
             Yoomoney = Configuration["yoomoney"];
-            
+            if (Yoomoney is null) Console.WriteLine("WARN: Yoomoney is not setup");
+
+            RCON = Configuration["RCON"];
+            if (RCON is null) Console.WriteLine("WARN: RCON is not setup");
+
             services.AddControllers();
-
-
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.Configure<KestrelServerOptions>(options =>
