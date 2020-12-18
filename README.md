@@ -2,7 +2,7 @@
 
 NetSoreShop is a .net core online shop  with digital delivery for online games.
 
-![.NET](https://github.com/edwardsky/netcoreshop/workflows/.NET/badge.svg) ![https://github.com/edwardsky/netcoreshop/issues](https://img.shields.io/github/issues/edwardsky/netcoreshop) ![https://github.com/edwardsky/netcoreshop/blob/master/LICENSE](https://img.shields.io/github/license/edwardsky/netcoreshop) ![Languages count](https://img.shields.io/github/languages/count/edwardsky/netcoreshop)
+![.NET](https://github.com/edwardsky/netcoreshop/workflows/.NET/badge.svg) ![https://github.com/edwardsky/netcoreshop/issues](https://img.shields.io/github/issues/edwardsky/netcoreshop) ![https://github.com/edwardsky/netcoreshop/blob/master/LICENSE](https://img.shields.io/github/license/edwardsky/netcoreshop) ![Languages count](https://img.shields.io/github/languages/count/edwardsky/netcoreshop) ![Current status is Development](https://img.shields.io/badge/Current%20status-Develop-orange)
 
 # Features Business 
 
