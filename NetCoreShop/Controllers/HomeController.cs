@@ -57,6 +57,9 @@ namespace NetCoreShop.Controllers
         private string SafeLang(string lang)
         {
             string safeLang = "";
+
+            //ToDO parce save langs
+            
             switch (lang)
             {
                 case null: safeLang = "ru"; break;
@@ -92,7 +95,8 @@ namespace NetCoreShop.Controllers
 #endif
             html = html.Replace("%min%", minJs);
 
-
+            html = html.Replace("//RSA", "window.RSA = \"" + Startup.RSAKEYpublic.Replace("\r", "").Replace("\n", "\\\n") + "\";");
+            html = html.Replace("-\\\n\";", "-\";");
 
             return Content(html, new MediaTypeHeaderValue("text/html"));
         }

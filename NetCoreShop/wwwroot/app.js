@@ -730,6 +730,7 @@ function bootstraped() {
         var pgr = undefined;
 
 
+
         if (window.view === "homepage") {
 
             var page = getParameterByName('page');
@@ -1591,6 +1592,21 @@ function bootstraped() {
         footer.appendChild(froot);
 
         document.body.appendChild(footer);
+
+
+        let banner = ce("section");
+        Attr(banner, "id", "NetCoreShop");
+        Attr(banner, "style", "padding: 1.2em; background: linear-gradient(207deg, #232526, #414345);text-align: center");
+        let ncsa = ce("a"); Attr(ncsa, "href", "https://github.com/edwardsky/netcoreshop");Attr(ncsa, "target", "_blank");
+        let ncsl = ce("img");
+        Attr(ncsl, "src", "/netcoreshopbadge.svg");
+        Attr(ncsl, "height", "20");
+        Attr(ncsl, "border", "0");
+        Append(ncsa, ncsl);
+        Append(banner, tn("Made on "));
+        Append(banner, ncsa);
+        Append(document.body, banner);
+
 
         $("#footerdiv").load(window.lang.cc);
 

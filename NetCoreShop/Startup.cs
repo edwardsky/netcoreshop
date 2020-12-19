@@ -19,24 +19,33 @@ using System.Threading.Tasks;
 
 namespace NetCoreShop
 {
+
+
     public class Startup
     {
 
         //Todo read from config
-        public static string Yoomoney = null;
+        public static string ShopName = null;
+        public static string[] ShopLangs = null;
+        public static string Yoomoney = null;        
+  
         public static string PSQL = null;
         public static string RCON = null;
         public static bool RCONTEST = false;
 
+        public static int RSA = 1024;
         public static string RSAKEYserver = null;
         public static string RSAKEYpublic = null;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;            
+        }
 
+        private void GenerateRSA(int bit)
+        {
             RsaKeyPairGenerator rsaGenerator = new RsaKeyPairGenerator();
-            rsaGenerator.Init(new KeyGenerationParameters(new SecureRandom(), 1024));
+            rsaGenerator.Init(new KeyGenerationParameters(new SecureRandom(), bit));
             var keyPair = rsaGenerator.GenerateKeyPair();
 
 
@@ -49,8 +58,8 @@ namespace NetCoreShop
                 RSAKEYserver = privateKeyTextWriter.ToString();
             }
 
-            Console.WriteLine($">>>>>> OpenSSL RSA PRIVATE KEY {RSAKEYserver.Length} <<<<<");
-            Console.WriteLine();
+            Console.WriteLine($">>>>>> OpenSSL RSA PRIVATE KEY {bit} bits <<<<<");
+            
 
             using (TextWriter publicKeyTextWriter = new StringWriter())
             {
@@ -61,10 +70,9 @@ namespace NetCoreShop
                 RSAKEYpublic = publicKeyTextWriter.ToString();
             }
 
-            Console.WriteLine(">>>>>> OpenSSL RSA PUBLIC KEY <<<<<");
+            //Console.WriteLine(">>>>>> OpenSSL RSA PUBLIC KEY <<<<<");
             Console.WriteLine();
             Console.WriteLine(RSAKEYpublic);
-
         }
 
         public IConfiguration Configuration { get; }
@@ -72,7 +80,34 @@ namespace NetCoreShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            ShopName = Configuration["shopname"];
+
+            var assemblyVersion = typeof(Program).Assembly.GetName().Version.ToString();
+            var assemblyName = typeof(Program).Assembly.GetName().Name.ToString();
+            var Dll = typeof(Program).Assembly.Location;
+            string Title = $"{assemblyName} {assemblyVersion} on { System.Runtime.InteropServices.RuntimeInformation.OSDescription }";
+            var Ver = assemblyVersion;
+
+            Console.WriteLine($"{assemblyName} {Ver}-{ThisAssembly.Git.Commit} OS:{ System.Runtime.InteropServices.RuntimeInformation.OSDescription }");
+            Console.WriteLine($"=================================");
+            Console.WriteLine($"Launch Shop {ShopName} at config");
+
+            try
+            {
+                string rsastr = Configuration["RSA"];
+                if(rsastr != null) RSA = int.Parse(rsastr);
+
+                GenerateRSA(RSA);
+
+            } catch (Exception ex)
+            {
+                Console.WriteLine("WARN: RSA key error > " + ex.Message);
+            }
+
+            var langs = Configuration["shoplangs"];
+            if (langs is null) ShopLangs = "ru".Split(",");
+            else ShopLangs = langs.Split(",");
+
             PSQL = Configuration["psql"];            
             if (PSQL is null) Console.WriteLine("WARN: PSQL is not setup");
 
